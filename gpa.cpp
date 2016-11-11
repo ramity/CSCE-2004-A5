@@ -396,26 +396,26 @@ int main ()
         cout << "Invalid filename. Please try again." << endl;
         getline(cin, selectedFilename);
       }
-      
+
       cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
 
       while(true)
       {
-        string menuSelector = menu();
+        char menuSelector = menu();
 
-        if(menuSelector == "A" || menuSelector == "a")
+        if(menuSelector == 'A' || menuSelector == 'a')
         {
           cout << "Congratulations, your GPA was " << gpa(courses, courseGrades, courseHours) << endl;
         }
-        else if(menuSelector == "B" || menuSelector == "b")
+        else if(menuSelector == 'B' || menuSelector == 'b')
         {
           print(courses, courseNames, semesters, courseNumbers, courseGrades, courseHours);
         }
-        else if(menuSelector == "C" || menuSelector == "c")
+        else if(menuSelector == 'C' || menuSelector == 'c')
         {
           cout << "Total hours with D grades are " << DRule(courses, courseGrades, courseHours) << endl;
         }
-        else if(menuSelector == "D" || menuSelector == "d")
+        else if(menuSelector == 'D' || menuSelector == 'd')
         {
           double tempGPA = 0;
           string selectedSemester = "";
@@ -444,7 +444,7 @@ int main ()
 
           cout << "Congratulations, your GPA was " << semesterGpa(courses, semesters, courseGrades, courseHours, selectedSemester) << " in " << selectedSemester << endl;
         }
-        else if(menuSelector == "E" || menuSelector == "e")
+        else if(menuSelector == 'E' || menuSelector == 'e')
         {
           if(courses + 1 < COURSE_MAX)
           {
@@ -457,7 +457,7 @@ int main ()
             cout << "Unable to add more than 10 classes" << endl;
           }
         }
-        else if(menuSelector == "Q" || menuSelector == "q")
+        else if(menuSelector == 'Q' || menuSelector == 'q')
         {
           //"escapes all logic"
           return 0;
@@ -487,21 +487,21 @@ int main ()
 
     while(true)
     {
-      string menuSelector = menu();
+      char menuSelector = menu();
 
-      if(menuSelector == "A" || menuSelector == "a")
+      if(menuSelector == 'A' || menuSelector == 'a')
       {
         cout << "Congratulations, your GPA was " << gpa(courses, courseGrades, courseHours) << endl;
       }
-      else if(menuSelector == "B" || menuSelector == "b")
+      else if(menuSelector == 'B' || menuSelector == 'b')
       {
         print(courses, courseNames, semesters, courseNumbers, courseGrades, courseHours);
       }
-      else if(menuSelector == "C" || menuSelector == "c")
+      else if(menuSelector == 'C' || menuSelector == 'c')
       {
         cout << "Total hours with D grades are " << DRule(courses, courseGrades, courseHours) << endl;
       }
-      else if(menuSelector == "D" || menuSelector == "d")
+      else if(menuSelector == 'D' || menuSelector == 'd')
       {
         double tempGPA = 0;
         string selectedSemester = "";
@@ -530,7 +530,7 @@ int main ()
 
         cout << "Congratulations, your GPA was " << semesterGpa(courses, semesters, courseGrades, courseHours, selectedSemester) << " in " << selectedSemester << endl;
       }
-      else if(menuSelector == "E" || menuSelector == "e")
+      else if(menuSelector == 'E' || menuSelector == 'e')
       {
         if(courses + 1 < COURSE_MAX)
         {
@@ -543,7 +543,7 @@ int main ()
           cout << "Unable to add more than 10 classes" << endl;
         }
       }
-      else if(menuSelector == "Q" || menuSelector == "q")
+      else if(menuSelector == 'Q' || menuSelector == 'q')
       {
         //"escapes all logic"
         return 0;
