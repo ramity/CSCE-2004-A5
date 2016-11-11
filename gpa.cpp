@@ -102,6 +102,7 @@ bool writing(const char filename[], const string name[], const string time[], co
       file << number[z];
       file << grade[z];
       file << hours[z];
+      file.ignore();
     }
   }
 
@@ -373,6 +374,8 @@ char menu()
 
 int main ()
 {
+  string selectedFilename;
+
   int courses = 0;
   string mode = "";
   string tempString = "";
@@ -421,7 +424,6 @@ int main ()
     }
     else
     {
-      string selectedFilename;
       cout << "Enter your file name" << endl;
       getline(cin, selectedFilename);
 
@@ -496,6 +498,14 @@ int main ()
       }
       else if(menuSelector == 'Q' || menuSelector == 'q')
       {
+        if(selectedFilename == "")
+        {
+          writing("courses.txt", courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
+        }
+        else
+        {
+          writing(selectedFilename.c_str(), courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
+        }
         //"escapes all logic"
         return 0;
       }
