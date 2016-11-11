@@ -202,105 +202,74 @@ void print(int n, string names[], string times[], string numbers[], char grades[
 
 void getCourse(string& name, string& time, string& number, char& grade, int& hours, int n)
 {
-  bool validSelection = false;
+  //name
+  cout << "Enter the course name (e.g. Programming Foundations I) for class number " << n << endl;
+  getline(cin,name);
 
-  while(!validSelection)
+  while(name == "")
   {
-    cout << "Enter the course name (e.g. Programming Foundations I) for class number " << n << endl;
-
+    cout << "Invalid input. Please try again." << endl;
     getline(cin,name);
-
-    if(name == "")
-    {
-      cout << "Invalid input. Please try again." << endl;
-    }
-    else
-    {
-      validSelection = true;
-    }
   }
+  //time
+  cout << "Enter the semester (e.g. Spring 2016) for class number " << n << endl;
+  getline(cin,time);
 
-  validSelection = false;
-
-  while(!validSelection)
+  while(time == "")
   {
-    cout << "Enter the semester (e.g. Spring 2016) for class number " << n << endl;
-
+    cout << "Invalid input. Please try again." << endl;
     getline(cin,time);
-
-    if(time == "")
-    {
-      cout << "Invalid input. Please try again." << endl;
-    }
-    else
-    {
-      validSelection = true;
-    }
   }
+  //number
+  cout << "Enter the course number (e.g. CSCE 2004) for class number " << n << endl;
+  getline(cin,number);
 
-  validSelection = false;
-
-  while(!validSelection)
+  while(number == "")
   {
-    cout << "Enter the course number (e.g. CSCE 2004) for class number " << n << endl;
-
+    cout << "Invalid input. Please try again." << endl;
     getline(cin,number);
-
-    if(number == "")
-    {
-      cout << "Invalid input. Please try again." << endl;
-    }
-    else
-    {
-      validSelection = true;
-    }
   }
 
-  validSelection = false;
+  //number
+  //init values
+  string tempString = "";
+  grade = "";
 
-  while(!validSelection)
+  while(grade == "")
   {
     cout << "Enter the grade (A,B,C,D,F,W,I) for class number " << n << endl;
 
-    string tempString = "";
-
+    //re init
+    tempString = "";
     getline(cin,tempString);
-
 
     if(tempString == "A" || tempString == "a")
     {
       grade = 'A';
-      validSelection = true;
     }
     else if(tempString == "B" || tempString == "b")
     {
       grade = 'B';
-      validSelection = true;
     }
     else if(tempString == "C" || tempString == "c")
     {
       grade = 'C';
-      validSelection = true;
     }
     else if(tempString == "D" || tempString == "d")
     {
       grade = 'D';
-      validSelection = true;
     }
     else if(tempString == "F" || tempString == "f")
     {
       grade = 'F';
-      validSelection = true;
     }
     else if(tempString == "W" || tempString == "w")
     {
       grade = 'W';
-      validSelection = true;
     }
     else if(tempString == "I" || tempString == "i")
     {
       grade = 'I';
-      validSelection = true;
     }
     else
     {
@@ -308,34 +277,22 @@ void getCourse(string& name, string& time, string& number, char& grade, int& hou
     }
   }
 
-  validSelection = false;
+  cout << "Enter the course hours (1 ... 5) for class number " << n << endl;
+  cin >> hours;
 
-  while(!validSelection)
+  while(hours < 1 && hours > 5)
   {
-    cout << "Enter the course hours (1 ... 5) for class number " << n << endl;
-
+    cout << "Invalid user input, please try again." << endl;
     cin >> hours;
-
-    if(hours >= 1 && hours <= 5)
-    {
-      validSelection = true;
-    }
-    else
-    {
-      cout << "Invalid user input, please try again." << endl;
-    }
   }
-
-  cin.ignore();
 }
 
 char menu()
 {
-  bool validSelection = false;
-  char menuSelector;
   string tempString;
 
-  while(!validSelection)
+  //return overrides while loop
+  while(true)
   {
     cout << "Please enter the character next to the choice you wish to pick." << endl;
     cout << "Here are your options:" << endl;
@@ -344,6 +301,7 @@ char menu()
     cout << "C(c) . Compute the total credit hours of the courses with grade D" << endl;
     cout << "D(d) . Compute the GPA for a particular semester" << endl;
     cout << "E(e) . Add another course to the course list" << endl;
+    cout << "F(f) . Delete a course from the course list" << endl;
     cout << "Q(q) . Quit the program" << endl;
     cout << "Please choose one of the above" << endl;
 
@@ -351,39 +309,37 @@ char menu()
 
     if(tempString == "A" || tempString == "a")
     {
-      validSelection = true;
-      menuSelector = 'A';
+      return 'A';
     }
     else if(tempString == "B" || tempString == "b")
     {
-      validSelection = true;
-      menuSelector = 'B';
+      return 'B';
     }
     else if(tempString == "C" || tempString == "c")
     {
-      validSelection = true;
-      menuSelector = 'C';
+      return 'C';
     }
     else if(tempString == "D" || tempString == "d")
     {
-      validSelection = true;
-      menuSelector = 'D';
+      return 'D';
     }
     else if(tempString == "E" || tempString == "e")
     {
-      validSelection = true;
-      menuSelector = 'E';
+      return 'E';
+    }
+    else if(tempString == "F" || tempString == "f")
+    {
+      return 'F';
     }
     else if(tempString == "Q" || tempString == "q")
     {
-      validSelection = true;
-      menuSelector = 'Q';
+      return 'Q';
     }
     else
-      cout << "Invalid selection. Please try again.";
+    {
+      cout << "Invalid selection. Please try again." << endl;
+    }
   }
-
-  return menuSelector;
 }
 
 int main ()
