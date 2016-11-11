@@ -482,7 +482,7 @@ int main ()
     for(int step = 0;step < courses;step++)
     {
       //comeback
-      getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses)
+      getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
     }
 
     string menuSelector;
