@@ -441,25 +441,26 @@ int main ()
     }
   }
 
-  cout << "Interactive mode was selected." << endl;
-  cout << "Enter the number of classes for the system [1," << COURSE_MAX << "]" << endl;
-  cin >> courses;
-
-  while(courses <= 0 && courses >= COURSE_MAX)
+  if(courses == 0)
   {
-    cout << "The supplied input was not within specified bounds. Please try again." << endl;
+    cout << "Interactive mode was selected." << endl;
+    cout << "Enter the number of classes for the system [1," << COURSE_MAX << "]" << endl;
     cin >> courses;
+
+    while(courses <= 0 && courses >= COURSE_MAX)
+    {
+      cout << "The supplied input was not within specified bounds. Please try again." << endl;
+      cin >> courses;
+    }
+
+    cin.ignore();
+
+    for(int step = 0;step < courses;step++)
+    {
+      //comeback
+      getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
+    }
   }
-
-  cin.ignore();
-
-  for(int step = 0;step < courses;step++)
-  {
-    //comeback
-    getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
-  }
-
-  cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
 
   cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
 
