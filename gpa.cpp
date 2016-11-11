@@ -45,7 +45,6 @@ bool reading(const char filename[], string name[], string time[], string number[
       {
         cout << "Reading class " << z + 1 << endl;
         getline(file,name[z]);
-        //getline(file,name[z]);
         getline(file,time[z]);
         getline(file,number[z]);
         file >> grade[z];
@@ -399,7 +398,7 @@ int main ()
         getline(cin, selectedFilename);
       }
 
-      reading(selectedFilename, courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
+      reading(selectedFilename.c_str(), courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
     }
 
     cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
