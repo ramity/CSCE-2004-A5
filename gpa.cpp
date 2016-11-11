@@ -280,6 +280,8 @@ void getCourse(string& name, string& time, string& number, char& grade, int& hou
     cout << "Enter the course hours (1 ... 5) for class number " << n << endl;
     cin >> hours;
   }
+
+  cin.ignore();
 }
 
 char menu()
