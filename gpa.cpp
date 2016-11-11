@@ -239,7 +239,7 @@ void print(int n, string names[], string times[], string numbers[], char grades[
   cout << left << setw(w) << setfill(s) << "Course Number";
   cout << left << setw(w) << setfill(s) << "Grade";
   cout << left << setw(w) << setfill(s) << "Hour";
-  cout << endl;
+  cout << endl << endl;
 
   //lists all courses
   for(int z = 0;z<n;z++)
