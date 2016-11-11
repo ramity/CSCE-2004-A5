@@ -39,9 +39,7 @@ bool reading(const char filename[], string name[], string time[], string number[
     //gets first line
     file >> n;
 
-    cout << n;
-
-    if(n > capacity)
+    if(n < capacity)
     {
       for(int z = 0;z < n;z++)
       {
