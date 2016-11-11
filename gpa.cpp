@@ -96,7 +96,6 @@ bool writing(const char filename[], const string name[], const string time[], co
   if(file.is_open())
   {
     file << n;
-    file.ignore();
 
     for(int z = 0;z < n;z++)
     {
@@ -106,7 +105,6 @@ bool writing(const char filename[], const string name[], const string time[], co
       file << number[z] << endl;
       file << grade[z] << endl;
       file << hours[z] << endl;
-      file.ignore();
     }
   }
 
