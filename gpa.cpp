@@ -392,14 +392,14 @@ int main ()
   int courseHours[COURSE_MAX] = {0};
 
   cout << "Welcome to PFI course management system v1" << endl;
-  cout << "Would ou like to read the courses taken from a file?" << endl;
+  cout << "Would you like to read the courses taken from a file?" << endl;
   cout << "Please enter y for yes and n for no" << endl;
   getline(cin, mode);
 
   while(mode != "y" && mode != "n")
   {
     cout << "The character entered is " << mode << ". That is not y or n";
-    cout << "Would ou like to read the courses taken from a file?" << endl;
+    cout << "Would you like to read the courses taken from a file?" << endl;
     cout << "Please enter y for yes and n for no" << endl;
     getline(cin, mode);
   }
