@@ -357,7 +357,7 @@ int main ()
   cout << "Please enter y for yes and n for no" << endl;
   getline(cin, mode);
 
-  while(mode != 'y' && mode != 'n')
+  while(mode != "y" && mode != "n")
   {
     cout << "The character entered is " << mode << ". That is not y or n";
     cout << "Would ou like to read the courses taken from a file?" << endl;
@@ -365,7 +365,7 @@ int main ()
     getline(cin, mode);
   }
 
-  if(mode == 'y')
+  if(mode == "y")
   {
     string stock = "";
 
@@ -373,7 +373,7 @@ int main ()
     cout << "Please enter y for yes and n for no" << endl;
     getline(cin, stock);
 
-    while(stock != 'y' && stock != 'n')
+    while(stock != "y" && stock != "n")
     {
       cout << "The character entered is " << stock << ". That is not y or n";
       cout << "Would you like to use the default file?" << endl;
@@ -381,7 +381,7 @@ int main ()
       getline(cin, stock);
     }
 
-    if(mode == 'y')
+    if(mode == "y")
     {
       reading('courses.txt', courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
     }
