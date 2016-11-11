@@ -78,19 +78,23 @@ bool writing(const char filename[], const string name[], const string time[], co
   // the function stores course information of the arrays
   // to the file, similar to listing function of project 4
 
+  if(remove(filename) != 0)
+  {
+    cout << "Failed to psudo clear file named: " << filename << endl;
+    exit(EXIT_FAILURE);
+  }
+
   fstream file;
   file.open(filename);
 
   if(file.fail())
   {
     cout << "Failed to open file named: " << filename << endl;
-    cout << "Error in reading the deafult file. Terminating..." << endl;
     exit(EXIT_FAILURE);
   }
 
   if(file.is_open())
   {
-    //gets first line
     file << n;
     file.ignore();
 
