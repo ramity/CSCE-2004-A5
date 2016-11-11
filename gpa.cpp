@@ -477,6 +477,8 @@ int main ()
       cin >> courses;
     }
 
+    cin.ignore();
+
     for(int step = 0;step < courses;step++)
     {
       //comeback
