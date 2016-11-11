@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int COURSE_MAX = 10;
+int const COURSE_MAX = 10;
 
 bool reading(const char filename[], string name[], string time[], string number[], char grade[], int hours[], int& n, int capacity)
 {
