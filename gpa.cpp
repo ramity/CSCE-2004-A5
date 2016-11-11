@@ -45,9 +45,10 @@ bool reading(const char filename[], string name[], string time[], string number[
       {
         cout << "Reading class " << z + 1 << endl;
         getline(file,name[z]);
+        //getline(file,name[z]);
         getline(file,time[z]);
         getline(file,number[z]);
-        getline(file,grade[z]);
+        file >> grade[z];
         file >> hours[z];
       }
     }
