@@ -227,6 +227,8 @@ int DRule(int n, char grades[], int hours[])
 
 void print(int n, string names[], string times[], string numbers[], char grades[], int hours[])
 {
+  cout << endl;
+
   cout << "Displaying (" << n << " of " << n << ") courses." << endl << endl;
 
   const char s = ' ';
@@ -249,6 +251,8 @@ void print(int n, string names[], string times[], string numbers[], char grades[
     cout << left << setw(w) << setfill(s) << hours[z];
     cout << endl;
   }
+
+  cout << endl;
 }
 
 void getCourse(string& name, string& time, string& number, char& grade, int& hours, int n)
