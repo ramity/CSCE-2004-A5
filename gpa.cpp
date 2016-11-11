@@ -84,7 +84,7 @@ bool writing(const char filename[], const string name[], const string time[], co
     exit(EXIT_FAILURE);
   }
 
-  fstream file;
+  ofstream file;
   file.open(filename);
 
   if(file.fail())
