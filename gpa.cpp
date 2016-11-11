@@ -498,6 +498,42 @@ int main ()
           cout << "Unable to add more than 10 classes" << endl;
         }
       }
+      else if(menuSelector == 'F' || menuSelector == 'f')
+      {
+        if(courses - 1 >= 0)
+        {
+          int selection = 0;
+          cout << "Select from 1 to " << courses << " for the course to be deleted" << endl;
+          cin >> selection;
+          cin.ignore();
+
+          while(selection < 0 && selection > courses)
+          {
+            cout << "Invalid selection. Please try again" << endl;
+            cin >> selection;
+            cin.ignore();
+          }
+
+          //move elemnts left 1
+          for(int z = selection;z < courses;z++)
+          {
+            courseNames[z - 1] = courseNames[z];
+            semesters[z - 1] = semesters[z];
+            courseNumbers[z - 1] = courseNumbers[z];
+            courseGrades[z - 1] = courseGrades[z];
+            courseHours[z - 1] = courseHours[z];
+          }
+
+          //with this method, all ___[courses] still exist,
+          //but will be overwriten as a result
+
+          courses--;
+        }
+        else
+        {
+          cout << "There are not any courses to remove" << endl;
+        }
+      }
       else if(menuSelector == 'Q' || menuSelector == 'q')
       {
         if(selectedFilename == "")
