@@ -76,6 +76,37 @@ bool writing(const char filename[], const string name[], const string time[], co
   // are successful, otherwise it returns false
   // the function stores course information of the arrays
   // to the file, similar to listing function of project 4
+
+  fstream file;
+  file.open(filename);
+
+  if(file.fail())
+  {
+    cout << "Failed to open file named: " << filename << endl;
+    cout << "Error in reading the deafult file. Terminating..." << endl;
+    exit(EXIT_FAILURE);
+  }
+
+  if(file.is_open())
+  {
+    //gets first line
+    file << n;
+    file.ignore();
+
+    for(int z = 0;z < n;z++)
+    {
+      cout << "Writing class " << z + 1 << endl;
+      file << name[z];
+      file << time[z];
+      file << number[z];
+      file << grade[z];
+      file << hours[z];
+    }
+  }
+
+  file.close();
+
+  return 1;
 }
 
 double gpa(int n, const char grades[], const int hours[])
