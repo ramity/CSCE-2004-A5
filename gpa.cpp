@@ -50,6 +50,7 @@ bool reading(const char filename[], string name[], string time[], string number[
         getline(file,number[z]);
         file >> grade[z];
         file >> hours[z];
+        file.ignore();
       }
     }
     else
