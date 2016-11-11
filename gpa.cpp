@@ -233,14 +233,9 @@ void getCourse(string& name, string& time, string& number, char& grade, int& hou
   //number
   //init values
   string tempString = "";
-  grade = "";
-
-  while(grade == "")
+  while(tempString == "")
   {
     cout << "Enter the grade (A,B,C,D,F,W,I) for class number " << n << endl;
-
-    //re init
-    tempString = "";
     getline(cin,tempString);
 
     if(tempString == "A" || tempString == "a")
@@ -273,6 +268,7 @@ void getCourse(string& name, string& time, string& number, char& grade, int& hou
     }
     else
     {
+      tempString = "";
       cout << "Invalid user input, please try again" << endl;
     }
   }
