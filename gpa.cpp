@@ -214,7 +214,7 @@ int DRule(int n, char grades[], int hours[])
 
   for(int z = 0;z < n;z++)
   {
-    if(grades[z] == 1)
+    if(grades[z] == 'D')
     {
       calculation += hours[z];
     }
