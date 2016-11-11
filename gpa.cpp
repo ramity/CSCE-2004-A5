@@ -232,12 +232,22 @@ void print(int n, string names[], string times[], string numbers[], char grades[
   const char s = ' ';
   const int w = 50;
 
-  cout << "Course Name" << setw(w) << setfill(s) << "Semester" << setw(w) << setfill(s) << "Course Number" << setw(w) << setfill(s) << "Grade" << setw(w) << setfill(s) << "Hour" << endl;
+  cout << left << setw(w) << setfill(s) << "Course Name";
+  cout << left << setw(w) << setfill(s) << "Semester";
+  cout << left << setw(w) << setfill(s) << "Course Number";
+  cout << left << setw(w) << setfill(s) << "Grade";
+  cout << left << setw(w) << setfill(s) << "Hour";
+  cout << endl;
 
   //lists all courses
   for(int z = 0;z<n;z++)
   {
-    cout << names[z] << setw(w) << setfill(s) << times[z] << setw(w) << setfill(s) << numbers[z] << setw(w) << setfill(s) << grades[z] << setw(w) << setfill(s) << hours[z] << endl;
+    cout << left << setw(w) << setfill(s) << names[z];
+    cout << left << setw(w) << setfill(s) << times[z];
+    cout << left << setw(w) << setfill(s) << numbers[z];
+    cout << left << setw(w) << setfill(s) << grades[z];
+    cout << left << setw(w) << setfill(s) << hours[z];
+    cout << endl;
   }
 }
 
