@@ -95,7 +95,7 @@ bool writing(const char filename[], const string name[], const string time[], co
 
   if(file.is_open())
   {
-    file << n;
+    file << n << endl;
 
     for(int z = 0;z < n;z++)
     {
