@@ -227,13 +227,17 @@ int DRule(int n, char grades[], int hours[])
 
 void print(int n, string names[], string times[], string numbers[], char grades[], int hours[])
 {
-  cout << "Displaying (" << n << " of " << n << ") courses." << endl;
-  cout << endl;
-  cout << "Course Name" << setw(20) << "Semester" << setw(20) << "Course Number" << setw(20) << "Grade" << setw(20) << "Hour" << endl;
+  cout << "Displaying (" << n << " of " << n << ") courses." << endl << endl;
+
+  const char s = ' ';
+  const int w = 20;
+
+  cout << "Course Name" << setw(w) << setfill(s) << "Semester" << setw(w) << setfill(s) << "Course Number" << setw(w) << setfill(s) << "Grade" << setw(w) << setfill(s) << "Hour" << endl;
+
   //lists all courses
   for(int z = 0;z<n;z++)
   {
-    cout << names[z] << setw(20) << times[z] << setw(20) << numbers[z] << setw(20) << grades[z] << setw(20) << hours[z] << endl;
+    cout << names[z] << setw(w) << setfill(s) << times[z] << setw(w) << setfill(s) << numbers[z] << setw(w) << setfill(s) << grades[z] << setw(w) << setfill(s) << hours[z] << endl;
   }
 }
 
