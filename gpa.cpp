@@ -439,203 +439,136 @@ int main ()
 
       reading(selectedFilename.c_str(), courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
     }
+  }
 
-    cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
+  cout << "Interactive mode was selected." << endl;
+  cout << "Enter the number of classes for the system [1," << COURSE_MAX << "]" << endl;
+  cin >> courses;
 
-    while(true)
+  while(courses <= 0 && courses >= COURSE_MAX)
+  {
+    cout << "The supplied input was not within specified bounds. Please try again." << endl;
+    cin >> courses;
+  }
+
+  cin.ignore();
+
+  for(int step = 0;step < courses;step++)
+  {
+    //comeback
+    getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
+  }
+
+  cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
+
+  cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
+
+  while(true)
+  {
+    char menuSelector = menu();
+
+    if(menuSelector == 'A' || menuSelector == 'a')
     {
-      char menuSelector = menu();
+      cout << "Congratulations, your GPA was " << gpa(courses, courseGrades, courseHours) << endl;
+    }
+    else if(menuSelector == 'B' || menuSelector == 'b')
+    {
+      print(courses, courseNames, semesters, courseNumbers, courseGrades, courseHours);
+    }
+    else if(menuSelector == 'C' || menuSelector == 'c')
+    {
+      cout << "Total hours with D grades are " << DRule(courses, courseGrades, courseHours) << endl;
+    }
+    else if(menuSelector == 'D' || menuSelector == 'd')
+    {
+      double tempGPA = 0;
+      string selectedSemester = "";
+      int semesterIndex;
 
-      if(menuSelector == 'A' || menuSelector == 'a')
-      {
-        cout << "Congratulations, your GPA was " << gpa(courses, courseGrades, courseHours) << endl;
-      }
-      else if(menuSelector == 'B' || menuSelector == 'b')
-      {
-        print(courses, courseNames, semesters, courseNumbers, courseGrades, courseHours);
-      }
-      else if(menuSelector == 'C' || menuSelector == 'c')
-      {
-        cout << "Total hours with D grades are " << DRule(courses, courseGrades, courseHours) << endl;
-      }
-      else if(menuSelector == 'D' || menuSelector == 'd')
-      {
-        double tempGPA = 0;
-        string selectedSemester = "";
-        int semesterIndex;
+      cout << "Please input desired semester for calculation" << endl;
+      getline(cin,selectedSemester);
 
-        cout << "Please input desired semester for calculation" << endl;
-        getline(cin,selectedSemester);
-
-        double tempClasses = 0;
-        while(tempClasses == 0)
+      double tempClasses = 0;
+      while(tempClasses == 0)
+      {
+        for(int z = 0; z<courses;z++)
         {
-          for(int z = 0; z<courses;z++)
+          if(semesters[z] == selectedSemester)
           {
-            if(semesters[z] == selectedSemester)
-            {
-              tempClasses++;
-            }
-          }
-          if(tempClasses == 0)
-          {
-            cout << "Desired semester: " << selectedSemester << " was not found. Please try again." << endl;
-            cout << "Please input desired semester for calculation" << endl;
-            getline(cin,selectedSemester);
+            tempClasses++;
           }
         }
-
-        cout << "Congratulations, your GPA was " << semesterGpa(courses, semesters, courseGrades, courseHours, selectedSemester) << " in " << selectedSemester << endl;
-      }
-      else if(menuSelector == 'E' || menuSelector == 'e')
-      {
-        if(courses + 1 < COURSE_MAX)
+        if(tempClasses == 0)
         {
-          courses++;
-
-          getCourse(courseNames[courses - 1], semesters[courses - 1], courseNumbers[courses - 1], courseGrades[courses - 1], courseHours[courses - 1], courses);
-        }
-        else
-        {
-          cout << "Unable to add more than 10 classes" << endl;
+          cout << "Desired semester: " << selectedSemester << " was not found. Please try again." << endl;
+          cout << "Please input desired semester for calculation" << endl;
+          getline(cin,selectedSemester);
         }
       }
-      else if(menuSelector == 'F' || menuSelector == 'f')
+
+      cout << "Congratulations, your GPA was " << semesterGpa(courses, semesters, courseGrades, courseHours, selectedSemester) << " in " << selectedSemester << endl;
+    }
+    else if(menuSelector == 'E' || menuSelector == 'e')
+    {
+      if(courses + 1 < COURSE_MAX)
       {
-        if(courses - 1 >= 0)
+        courses++;
+
+        getCourse(courseNames[courses - 1], semesters[courses - 1], courseNumbers[courses - 1], courseGrades[courses - 1], courseHours[courses - 1], courses);
+      }
+      else
+      {
+        cout << "Unable to add more than 10 classes" << endl;
+      }
+    }
+    else if(menuSelector == 'F' || menuSelector == 'f')
+    {
+      if(courses - 1 >= 0)
+      {
+        int selection = 0;
+        cout << "Select from 1 to " << courses << " for the course to be deleted" << endl;
+        cin >> selection;
+        cin.ignore();
+
+        while(selection < 0 && selection > courses)
         {
-          int selection = 0;
-          cout << "Select from 1 to " << courses << " for the course to be deleted" << endl;
+          cout << "Invalid selection. Please try again" << endl;
           cin >> selection;
           cin.ignore();
-
-          while(selection < 0 && selection > courses)
-          {
-            cout << "Invalid selection. Please try again" << endl;
-            cin >> selection;
-            cin.ignore();
-          }
-
-          //move elemnts left 1
-          for(int z = selection;z < courses;z++)
-          {
-            courseNames[z - 1] = courseNames[z];
-            semesters[z - 1] = semesters[z];
-            courseNumbers[z - 1] = courseNumbers[z];
-            courseGrades[z - 1] = courseGrades[z];
-            courseHours[z - 1] = courseHours[z];
-          }
-
-          //with this method, all ___[courses] still exist,
-          //but will be overwriten as a result
-
-          courses--;
         }
-        else
+
+        //move elemnts left 1
+        for(int z = selection;z < courses;z++)
         {
-          cout << "There are not any courses to remove" << endl;
+          courseNames[z - 1] = courseNames[z];
+          semesters[z - 1] = semesters[z];
+          courseNumbers[z - 1] = courseNumbers[z];
+          courseGrades[z - 1] = courseGrades[z];
+          courseHours[z - 1] = courseHours[z];
         }
+
+        //with this method, all ___[courses] still exist,
+        //but will be overwriten as a result
+
+        courses--;
       }
-      else if(menuSelector == 'Q' || menuSelector == 'q')
+      else
       {
-        if(selectedFilename == "")
-        {
-          writing("courses.txt", courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
-        }
-        else
-        {
-          writing(selectedFilename.c_str(), courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
-        }
-        //"escapes all logic"
-        return 0;
+        cout << "There are not any courses to remove" << endl;
       }
     }
-  }
-  else
-  {
-    cout << "Interactive mode was selected." << endl;
-    cout << "Enter the number of classes for the system [1," << COURSE_MAX << "]" << endl;
-    cin >> courses;
-
-    while(courses <= 0 && courses >= COURSE_MAX)
+    else if(menuSelector == 'Q' || menuSelector == 'q')
     {
-      cout << "The supplied input was not within specified bounds. Please try again." << endl;
-      cin >> courses;
-    }
-
-    cin.ignore();
-
-    for(int step = 0;step < courses;step++)
-    {
-      //comeback
-      getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
-    }
-
-    cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
-
-    while(true)
-    {
-      char menuSelector = menu();
-
-      if(menuSelector == 'A' || menuSelector == 'a')
+      if(selectedFilename == "")
       {
-        cout << "Congratulations, your GPA was " << gpa(courses, courseGrades, courseHours) << endl;
+        writing("courses.txt", courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
       }
-      else if(menuSelector == 'B' || menuSelector == 'b')
+      else
       {
-        print(courses, courseNames, semesters, courseNumbers, courseGrades, courseHours);
+        writing(selectedFilename.c_str(), courseNames, semesters, courseNumbers, courseGrades, courseHours, courses);
       }
-      else if(menuSelector == 'C' || menuSelector == 'c')
-      {
-        cout << "Total hours with D grades are " << DRule(courses, courseGrades, courseHours) << endl;
-      }
-      else if(menuSelector == 'D' || menuSelector == 'd')
-      {
-        double tempGPA = 0;
-        string selectedSemester = "";
-        int semesterIndex;
-
-        cout << "Please input desired semester for calculation" << endl;
-        getline(cin,selectedSemester);
-
-        double tempClasses = 0;
-        while(tempClasses == 0)
-        {
-          for(int z = 0; z<courses;z++)
-          {
-            if(semesters[z] == selectedSemester)
-            {
-              tempClasses++;
-            }
-          }
-          if(tempClasses == 0)
-          {
-            cout << "Desired semester: " << selectedSemester << " was not found. Please try again." << endl;
-            cout << "Please input desired semester for calculation" << endl;
-            getline(cin,selectedSemester);
-          }
-        }
-
-        cout << "Congratulations, your GPA was " << semesterGpa(courses, semesters, courseGrades, courseHours, selectedSemester) << " in " << selectedSemester << endl;
-      }
-      else if(menuSelector == 'E' || menuSelector == 'e')
-      {
-        if(courses + 1 < COURSE_MAX)
-        {
-          courses++;
-
-          getCourse(courseNames[courses - 1], semesters[courses - 1], courseNumbers[courses - 1], courseGrades[courses - 1], courseHours[courses - 1], courses);
-        }
-        else
-        {
-          cout << "Unable to add more than 10 classes" << endl;
-        }
-      }
-      else if(menuSelector == 'Q' || menuSelector == 'q')
-      {
-        //"escapes all logic"
-        return 0;
-      }
+      //"escapes all logic"
+      return 0;
     }
   }
 }
