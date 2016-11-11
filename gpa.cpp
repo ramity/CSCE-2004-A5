@@ -230,7 +230,7 @@ void print(int n, string names[], string times[], string numbers[], char grades[
   cout << "Displaying (" << n << " of " << n << ") courses." << endl << endl;
 
   const char s = ' ';
-  const int w = 30;
+  const int w = 50;
 
   cout << "Course Name" << setw(w) << setfill(s) << "Semester" << setw(w) << setfill(s) << "Course Number" << setw(w) << setfill(s) << "Grade" << setw(w) << setfill(s) << "Hour" << endl;
 
