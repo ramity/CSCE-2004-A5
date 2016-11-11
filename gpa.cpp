@@ -340,7 +340,7 @@ char menu()
 int main ()
 {
   int courses = 0;
-  char mode = 'q';
+  string mode = "";
   string tempString = "";
 
   //init all vars
@@ -367,7 +367,7 @@ int main ()
 
   if(mode == 'y')
   {
-    char stock = 'q';
+    string stock = "";
 
     cout << "Would you like to use the default file?" << endl;
     cout << "Please enter y for yes and n for no" << endl;
