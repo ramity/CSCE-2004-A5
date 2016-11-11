@@ -508,20 +508,16 @@ int main ()
       }
       else if(menuSelector == "D" || menuSelector == "d")
       {
-        validSelection = false;
-
         double tempGPA = 0;
         string selectedSemester = "";
         int semesterIndex;
 
-        while(!validSelection)
+        cout << "Please input desired semester for calculation" << endl;
+        getline(cin,selectedSemester);
+
+        double tempClasses = 0;
+        while(tempClasses == 0)
         {
-          cout << "Please input desired semester for calculation" << endl;
-
-          getline(cin,selectedSemester);
-
-          double tempClasses = 0;
-
           for(int z = 0; z<courses;z++)
           {
             if(semesters[z] == selectedSemester)
@@ -529,14 +525,11 @@ int main ()
               tempClasses++;
             }
           }
-
           if(tempClasses == 0)
           {
             cout << "Desired semester: " << selectedSemester << " was not found. Please try again." << endl;
-          }
-          else
-          {
-            validSelection = true;
+            cout << "Please input desired semester for calculation" << endl;
+            getline(cin,selectedSemester);
           }
         }
 
