@@ -383,8 +383,7 @@ int main ()
 
     if(mode == "y")
     {
-      reading('courses.txt', courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
-      bool reading(const char filename[], string name[], string time[], string number[], char grade[], int hours[], int& n, int capacity)
+      reading("courses.txt", courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
     }
     else
     {
