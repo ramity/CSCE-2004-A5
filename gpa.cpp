@@ -97,11 +97,11 @@ bool writing(const char filename[], const string name[], const string time[], co
     for(int z = 0;z < n;z++)
     {
       cout << "Writing class " << z + 1 << endl;
-      file << name[z];
-      file << time[z];
-      file << number[z];
-      file << grade[z];
-      file << hours[z];
+      file << name[z] << endl;
+      file << time[z] << endl;
+      file << number[z] << endl;
+      file << grade[z] << endl;
+      file << hours[z] << endl;
       file.ignore();
     }
   }
