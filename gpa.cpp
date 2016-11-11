@@ -38,13 +38,13 @@ bool reading(const char filename[], string name[], string time[], string number[
   {
     //gets first line
     file >> n;
+    file.ignore();
 
     if(n < capacity)
     {
       for(int z = 0;z < n;z++)
       {
         cout << "Reading class " << z + 1 << endl;
-        getline(file,name[z]);
         getline(file,name[z]);
         getline(file,time[z]);
         getline(file,number[z]);
