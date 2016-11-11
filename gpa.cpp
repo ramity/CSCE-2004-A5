@@ -396,14 +396,12 @@ int main ()
         cout << "Invalid filename. Please try again." << endl;
         getline(cin, selectedFilename);
       }
-
-      string menuSelector;
-
+      
       cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
 
       while(true)
       {
-        menuSelector = menu();
+        string menuSelector = menu();
 
         if(menuSelector == "A" || menuSelector == "a")
         {
@@ -485,13 +483,11 @@ int main ()
       getCourse(courseNames[step], semesters[step], courseNumbers[step], courseGrades[step], courseHours[step], courses);
     }
 
-    string menuSelector;
-
     cout << "Welcome to the interactive menu-driven part of the GPA and Course storage program." << endl;
 
     while(true)
     {
-      menuSelector = menu();
+      string menuSelector = menu();
 
       if(menuSelector == "A" || menuSelector == "a")
       {
