@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int const COURSE_MAX = 10;
+int COURSE_MAX = 10;
 
 bool reading(const char filename[], string name[], string time[], string number[], char grade[], int hours[], int& n, int capacity)
 {
@@ -384,6 +384,7 @@ int main ()
     if(mode == "y")
     {
       reading('courses.txt', courseNames, semesters, courseNumbers, courseGrades, courseHours, courses, COURSE_MAX);
+      bool reading(const char filename[], string name[], string time[], string number[], char grade[], int hours[], int& n, int capacity)
     }
     else
     {
@@ -419,20 +420,16 @@ int main ()
         }
         else if(menuSelector == "D" || menuSelector == "d")
         {
-          validSelection = false;
-
           double tempGPA = 0;
           string selectedSemester = "";
           int semesterIndex;
 
-          while(!validSelection)
+          cout << "Please input desired semester for calculation" << endl;
+          getline(cin,selectedSemester);
+
+          double tempClasses = 0;
+          while(tempClasses == 0)
           {
-            cout << "Please input desired semester for calculation" << endl;
-
-            getline(cin,selectedSemester);
-
-            double tempClasses = 0;
-
             for(int z = 0; z<courses;z++)
             {
               if(semesters[z] == selectedSemester)
@@ -440,14 +437,11 @@ int main ()
                 tempClasses++;
               }
             }
-
             if(tempClasses == 0)
             {
               cout << "Desired semester: " << selectedSemester << " was not found. Please try again." << endl;
-            }
-            else
-            {
-              validSelection = true;
+              cout << "Please input desired semester for calculation" << endl;
+              getline(cin,selectedSemester);
             }
           }
 
